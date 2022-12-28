@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import Sidebar from './components/Sidebar/Sidebar'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Overview from './views/Overview'
+import AddUser from './views/AddUser'
+import Users from './views/Users/Users'
+import MainContainer from './components/MainContainer/MainContainer'
+import { useState } from 'react'
 
 function App() {
+  const [sidebar, setSidebar] = useState(true)
+
+  const showSidebar = () => setSidebar(!sidebar)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Sidebar sidebar={sidebar} showSidebar={showSidebar}/>
+      <MainContainer sidebar={sidebar}>
+        <Routes>
+          <Route path="/overview" exact element={<Overview />}/>
+          <Route path="/adduser" exact element={<AddUser />}/>
+          <Route path="/users" exact element={<Users />}/>
+        </Routes>
+      </MainContainer> 
+    </Router>
   );
 }
 
