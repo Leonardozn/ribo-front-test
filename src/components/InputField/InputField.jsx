@@ -28,7 +28,7 @@ const InputField = (props) => {
         type={ props.type || null }
         name={ props.name || null }
         placeholder={ props.placeholder || null }
-        onChange={ props.changeValue || null }
+        onChange={ props.changeMethod || null }
       />
     </div>
   )

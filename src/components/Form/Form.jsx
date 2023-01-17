@@ -36,7 +36,7 @@ const Form = () => {
           name={item.name}
           type={item.type}
           placeholder={item.name}
-          changeValue={changeValue}
+          changeMethod={changeValue}
         />
       })}
       <InputButton method={save}/>
